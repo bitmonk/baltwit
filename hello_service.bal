@@ -13,8 +13,14 @@ documentation {
    A service is a network-accessible API
    Advertised on '/hello', port comes from listener endpoint
 }
+@http:ServiceConfig {
+   basePath: "/"
+}
 service<http:Service> hello bind listener {
-
+    @http:ResourceConfig {
+        methods: ["POST"],
+        path: "/"
+    }
     documentation {
        A resource is an invokable API method
        Accessible at '/hello/sayHello
